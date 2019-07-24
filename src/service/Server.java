@@ -42,6 +42,7 @@ public class Server implements Runnable {
     }
 
     public void run() {
+	ServerController.currentUser++;
 	try {
 	    do {
 		out = new DataOutputStream(socket.getOutputStream());
@@ -136,8 +137,8 @@ public class Server implements Runnable {
 	    } while (true);
 
 	} catch (Exception e) {
+	    ServerController.currentUser--;
 	    System.out.println(e.getMessage());
-	    e.printStackTrace();
 	}
     }
 
